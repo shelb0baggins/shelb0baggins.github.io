@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900|Raleway:300" rel="stylesheet">
+    <!-- bootstrap css -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <!--my script-->
+        <script type="text/javascript" src="script.js">
+
+        </script>
+        <!-- paper.js script -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.8/paper-full.min.js"></script>
+        <!-- bootstrap js -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <!-- my css -->
+        <link rel="stylesheet" href="styles.css">
+        <!-- paper.js canvas -->
+
+
+        <title></title>
+    </head>
+    <body>
+
+            <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" href="port.html">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">About</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Work</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Contact</a>
+  </li>
+
+</ul>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+        <h1>shelby</h1>
+        <h3>dog-mom, developer, designer, something here</h3>
+        </div>
+        </div>
+        </div>
+        <script type="text/paperscript" canvas="myCanvas">
+
+            // The amount of circles we want to make:
+            var count = 500;
+
+            // Create a symbol, which we will use to place instances of later:
+            var path = new Path.Circle({
+                center: [0, 0],
+                radius: 2.5,
+                fillColor: 'whitesmoke',
+                 });
+
+            var symbol = new Symbol(path);
+
+            // Place the instances of the symbol:
+            for (var i = 0; i < count; i++) {
+                // The center position is a random point in the view:
+                var center = Point.random() * view.size;
+                var placedSymbol = symbol.place(center);
+                placedSymbol.scale(i / count);
+            }
+
+            // The onFrame function is called up to 60 times a second:
+            function onFrame(event) {
+                // Run through the active layer's children list and change
+                // the position of the placed symbols:
+                for (var i = 0; i < count; i++) {
+                    var item = project.activeLayer.children[i];
+
+                    // Move the item 1/20th of its width to the right. This way
+                    // larger circles move faster than smaller circles:
+                    item.position.x += item.bounds.width / 7;
+
+                    // If the item has left the view on the right, move it back
+                    // to the left:
+                    if (item.bounds.left > view.size.width) {
+                        item.position.x = -item.bounds.width;
+                    }
+                }
+            }
+
+            </script>
+
+
+        <canvas id="myCanvas" resize="true"></canvas>
+    </body>
+</html>
