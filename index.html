@@ -8,6 +8,7 @@
     <!-- bootstrap css -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <!--my script-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="script.js">
 
         </script>
@@ -21,8 +22,17 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         <!-- my css -->
         <link rel="stylesheet" href="styles.css">
-        <!-- paper.js canvas -->
-
+        
+<script>
+        $(document).ready({
+          var words = ['dog mom', 'graphic designer', 'wine-lover',
+           'ui/ux', 'sandwich artist', 'interaction designer', 'ravenclaw'];
+          var t = setInterval(function(){
+              var random = Math.round( Math.random() * (words.length - 1) );
+              $('#changing').html( words[ random ]);
+            }, 1000);
+        });
+        </script>
 
         <title>Shelby Cuaron</title>
     </head>
@@ -49,15 +59,14 @@
         <div class="col-lg-12">
             <br><br><br><br><br><br><br>
         <h1 id="home"><i class="fas fa-hat-wizard" id="small"></i>shelby <i class="fas fa-hat-wizard"></i> cuaron</h1>
-        <h3>dog-mom, web developer, designer, and wine lover.<br>
-        </h3>
+       <h3 id="changing">developer</h3>
 
         </div>
         </div>
         </div>
 
 
-
+        <!-- paper.js canvas -->
         <!-- //animation script -->
         <script type="text/paperscript" canvas="myCanvas">
 
